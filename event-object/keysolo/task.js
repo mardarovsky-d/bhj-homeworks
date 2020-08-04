@@ -10,6 +10,7 @@ class Game {
     this.registerEvents();
   }
 
+
   reset() {
     this.setNewWord();
     this.winsElement.textContent = 0;
@@ -17,18 +18,20 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    this.keyPressed = document.addEventListener('keyup', event => {
+      let neededKey = this.currentSymbol.innerHTML;
+      if (event.key === neededKey) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    });
   }
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
     this.currentSymbol = this.currentSymbol.nextElementSibling;
+    console.log(this.currentSymbol);
     if (this.currentSymbol !== null) {
       return;
     }
