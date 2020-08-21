@@ -15,12 +15,10 @@ addTaskButton.addEventListener('click', (e) => {
         );
         input.value = '';
         const tasks = Array.from(document.querySelectorAll('.task'));
-        tasks.forEach((task) => {
-            const removeTaskButton = task.querySelector('.task__remove');
-            removeTaskButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                task.remove();
-            })
-        })
+        const removeTaskButton = tasks[tasks.length - 1].querySelector('.task__remove');
+        removeTaskButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            tasks[tasks.length - 1].remove();
+        });
     }
 });
