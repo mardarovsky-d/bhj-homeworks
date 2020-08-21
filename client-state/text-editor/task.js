@@ -1,7 +1,11 @@
 const editor = document.getElementById('editor');
 const deleteButton = document.getElementById('delete');
 
-editor.value = localStorage.editor;
+if (localStorage.editor !== undefined) {
+    editor.value = localStorage.editor;
+} else {
+    editor.value = '';
+}
 
 editor.addEventListener('change', () => {
     localStorage.editor = editor.value;
